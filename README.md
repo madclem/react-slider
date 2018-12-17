@@ -2,9 +2,9 @@ Responsive React-Slider, using RequestAnimationFrame and 3 images looping in the
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### `npm start`
+`npm i` to install dependencies
 
-Runs the app in the development mode.<br>
+`npm start` or `yarn start` to run the app 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
