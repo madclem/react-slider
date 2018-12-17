@@ -1,4 +1,4 @@
-###DEMO 
+### DEMO
 https://madclem.github.io/react-slider/
 
 Responsive React-Slider, using RequestAnimationFrame and 3 images looping in the DOM.
