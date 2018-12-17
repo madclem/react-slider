@@ -47,7 +47,9 @@ class App extends Component {
         let needsResize = !this.props.height || !this.props.width;
         if (needsResize) window.addEventListener('resize', this.onResize);
         window.addEventListener('mouseup', this.onMouseUp);
+        window.addEventListener('touchend', this.onMouseUp);
         window.addEventListener('mousemove', this.onMouseMove);
+        window.addEventListener('touchmove', this.onMouseMove);
         window.addEventListener('keydown', this.onKeyDown);
 
         // preload the first three images (left, current, right)
@@ -70,7 +72,6 @@ class App extends Component {
 
     componentDidUpdate() {
         let needsResize = !this.props.height || !this.props.width;
-        console.log('didUpdate', this.props.height, this.props.width);
         if (!this.state.loading && this.containerSlider.current) {
             
             this.onResize();
@@ -82,7 +83,9 @@ class App extends Component {
         window.removeEventListener('mouseup', this.onMouseUp);
         window.removeEventListener('mousemove', this.onMouseMove);
         window.removeEventListener('keydown', this.onKeyDown);
-        window.removeEventListener('resize', this.onResize)
+        window.removeEventListener('resize', this.onResize);
+        window.addEventListener('touchend', this.onMouseUp);
+        window.addEventListener('touchmove', this.onMouseMove);
     }
 
     onResize = () => {
@@ -154,7 +157,13 @@ class App extends Component {
     getXMouse = function(element, evt) {
         let rect = element.getBoundingClientRect();
         let root = document.documentElement;
-        let x = evt.clientX - rect.left - root.scrollLeft;
+
+        let x = 0;
+        if (evt.touches) {
+            if (evt.touches[0]) x = evt.touches[0].pageX - rect.left - root.scrollLeft;
+            else x = this.lastTouchX;
+        }
+        else x = evt.clientX - rect.left - root.scrollLeft;
 
         return x;
     }
@@ -163,15 +172,15 @@ class App extends Component {
         this._down = true;
         // used to know how much we moved
         this.originalX = this.getXMouse(e.currentTarget, e);
+        this.lastTouchX = this.originalX;
     }
     
     onMouseMove = (e) => {
-
         if (!this._down) return;
-        
         let x = this.getXMouse(this.containerSlider.current, e);
         const differenceX = this.originalX - x;
         this.targetX = this.cameraX - differenceX;
+        this.lastTouchX = x;
         this.preventDefault(e);
     }
 
@@ -330,7 +339,7 @@ class App extends Component {
         let content = '';
         if (this.data) {
             content = this.data.map((img, index) => {
-                return (<div key={img.url} className='slider_point' onClick={this.onPointClicked} data-index={index} />)
+                return (<div key={img.url} className='slider_point' onTouchEnd={this.onPointClicked} onClick={this.onPointClicked} data-index={index} />)
             });
         }
 
@@ -368,7 +377,6 @@ class App extends Component {
     render() {
         var divStyle = {};
 
-        console.log('render slider');
         
         if (this.props.width) divStyle.width = this.props.width;
         if (this.props.height) divStyle.height = this.props.height;
@@ -377,7 +385,7 @@ class App extends Component {
 
         if (!this.state.loading) {
             content = (
-                <div className='slider_container' style={divStyle} ref={this.containerSlider} onMouseDown={this.onMouseDown} >
+                <div className='slider_container' style={divStyle} ref={this.containerSlider} onTouchStart={this.onMouseDown} onMouseDown={this.onMouseDown} >
                     <div className='slider_mask' style={divStyle}>
                         <div className='slider_movable' ref={this.slider}>
                             <div className='image_slider'><img alt='photoproduct' /> <div className='slider_image_children' /></div>

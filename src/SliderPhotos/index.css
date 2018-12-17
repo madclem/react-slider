@@ -12,6 +12,7 @@
     justify-content: center;
     cursor: pointer;
     position:relative;
+    touch-action: none;
 }
 
 .slider_container .slider_points_container {
