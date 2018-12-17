@@ -1,3 +1,6 @@
+### DEMO
+https://madclem.github.io/react-slider/
+
 Responsive React-Slider, using RequestAnimationFrame and 3 images looping in the DOM.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
