@@ -34,8 +34,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        // this.data = this.props.data;
-        this.data = [{ url: '/fr.jpg', children: "<div>test</div>"}, { url: '/uk.jpg'}, { url: '/4.jpg'}, { url: '/dhl_banner.png'}]
+        this.data = this.props.data; 
 
         this.nbImages = this.data.length;
         this.currentIndex = 0;

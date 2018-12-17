@@ -3,6 +3,18 @@ body, html {
   height: 100%;
 }
 
+.title {
+  font-size: 30px;
+  color: white;
+  /* margin: auto; */
+  /* text-align: center; */
+  margin: 20px;
+}
+
+.black {
+  color: black;
+}
+
 #root {
   height: 100%;
 }
