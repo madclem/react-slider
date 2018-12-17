@@ -74,11 +74,11 @@ class App extends Component {
     }
 
     const data = [
-      { url: '/dog1.jpg', children: "<div class='title'>Cute dog</div>"},
-      { url: '/dog2.jpg', children: "<div class='title'>Cute dog 2</div>"},
-      { url: '/dog3.jpg', children: "<div class='title'>Cute dog 3</div>"},
-      { url: '/dog4.jpg', children: "<div class='title'>Cute dog 4</div>"},
-      { url: '/dog5.jpg', children: "<div class='title black'>THE CUTEST</div>"}
+      { url: './dog1.jpg', children: "<div class='title'>Cute dog</div>"},
+      { url: './dog2.jpg', children: "<div class='title'>Cute dog 2</div>"},
+      { url: './dog3.jpg', children: "<div class='title'>Cute dog 3</div>"},
+      { url: './dog4.jpg', children: "<div class='title'>Cute dog 4</div>"},
+      { url: './dog5.jpg', children: "<div class='title black'>THE CUTEST</div>"}
     ]
     return (
       <div className="App">
