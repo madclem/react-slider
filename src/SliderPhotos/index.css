@@ -1,0 +1,90 @@
+.container {
+    margin:auto;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slider_container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    position:relative;
+}
+
+.slider_container .slider_points_container {
+    position: absolute;
+    top: 90%;
+    display: flex;
+    justify-content: center;
+}
+
+.slider_container .slider_points_container .slider_point {
+    background-color: black;
+    width: 10px;
+    height: 10px;
+    margin: 0px 5px;
+    opacity: .8;
+    border-radius: 100%;
+    border: 1px solid white;
+}
+
+.slider_container .slider_points_container .slider_point:hover {
+    background-color: grey;
+    opacity: 1;
+}
+
+.slider_container .slider_points_container .slider_point.active {
+    border: 1px solid black;
+    background-color: white;
+    opacity: 1;
+}
+
+.slider_container .slider_mask {
+    min-width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+.slider_container .slider_mask .slider_movable {
+    position:relative;
+}
+
+.slider_container .slider_mask .slider_movable .image_slider {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.slider_container .slider_mask .slider_movable .image_slider .slider_image_children {
+    position:absolute;
+    top: 0;
+    left: 0;
+}
+
+.slider_container .slider_mask .slider_movable .image_slider img {
+    width: 100%;
+}
+
+.container img.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left:-25px;
+    margin-top:-25px;
+    width: 50px;
+    height: 50px;
+    animation: logo-spin infinite 2s linear;
+}
+
+@keyframes logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
