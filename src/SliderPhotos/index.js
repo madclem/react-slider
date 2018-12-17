@@ -304,7 +304,10 @@ class App extends Component {
         
         // assign correct point indicator :)
         this.setPointActive(easeX);
-        this.nextFrame = window.requestAnimationFrame(this.update); // RAF
+
+        if (snap !== true) {
+            this.nextFrame = window.requestAnimationFrame(this.update); // RAF
+        }
     }
 
     // set the correct point indicator to indicate which slide we're on
